@@ -1,0 +1,25 @@
+<div class="news">
+	<div class="news__img_cntr" *ngIf="article.urlToImage">
+		<img class="news__img" [src]="article.urlToImage" alt="">
+	</div>
+	<div class="news__info-cntr">
+		<div class="news__title_cntr">
+			<h2 class="news__title">{{article.title}}</h2>
+		</div>
+		<div class="news__lower-info-cntr">
+			<div class="news__lower-info-author-time-cntr">
+				<div class="news__author_cntr">
+					<span class="news__author">{{article.author ? article.author : 'Unknown'}}</span>
+				</div>
+				<div class="news__publication-time_cntr">
+					<div class="news__publication-time">{{article.publishedAt | date: "dd MMMM yyyy h:mma"}}</div>
+				</div>
+			</div>
+
+
+			<form  class="news__link_cntr" [action]="article.url" target="_blank">
+				<button class="news__link">Open in {{article.source.name}}</button>
+			</form>
+		</div>
+	</div>
+</div>

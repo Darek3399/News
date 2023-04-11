@@ -1,0 +1,6 @@
+<div class="error" *ngIf="errorService.error">
+	<div class="error__wrapper">
+		<div class="error__text">{{errorService.error}}</div>
+		<button type="button" class="error__button" (click)="errorService.clear()">Close</button>
+	</div>
+</div>

@@ -1,0 +1,93 @@
+<div class="everythingt__cntr">
+
+
+	<div class="everythingt__search">
+		<input type="input" placeholder="Inter your request" class="everythingt__search_input">
+		<button type="button" class="everythingt__search_button" (click)="submit()">Search</button>
+	</div>
+
+
+	<div class="everythingt__filters">
+
+
+		<div class="everythingt__filter searching-in" tabindex="0" clickOutsideSearchIn (clickOutside)="searchingInClickedOutside()">
+			<div class="everythingt__filter_closed" (click)="searchingInSelectOpened()"></div>
+			<div class="everythingt__filter_text" *ngFor="let rrr of currentSearchingInCategory">{{rrr | titlecase}}</div>
+			<img alt="" src="./assets/img/arrow_for_select.png" class="everythingt__filter_arrow searching-in-arrow">
+
+			<div class="searching-in__row" *ngIf="isSearchingInCategoryOpened">
+				<div class="searching-in__row-item" *ngFor=" let category of searchingIn; let i = index">
+					<div class="searching-in__row-item-click" (click)="searchingInButtonClick($event)" [id]="category"></div>
+					<input type="checkbox" class="searching-in__item-checkbox" [value]="category | titlecase">
+					<div class="searching-in__item-category-text">{{category | titlecase}}</div>
+				</div>
+			</div>
+
+		</div>
+
+
+
+
+		<div class="everythingt__filter languages" tabindex="1" clickOutsideLanguage
+			(clickOutside)="languageClickedOutside()">
+			<div class="everythingt__filter_closed" (click)="languageSelectOpened()"></div>
+			<div class="everythingt__filter_text">{{currentLanguage | titlecase}}</div>
+			<img alt="" src="../../../assets/img/arrow_for_select.png" class="everythingt__filter_arrow languages-arrow">
+			<div class="everythingt__filter_row" *ngIf="isLanguageOpened">
+				<div class="everythingt__filter_row-item" *ngFor="let language of languages"
+					(click)="selectLanguage($event)">{{language | titlecase}}</div>
+			</div>
+		</div>
+
+
+
+		<div class="everythingt__filter sort" tabindex="2" clickOutsideSort (clickOutside)="sortClickedOutside()">
+			<div class="everythingt__filter_closed" (click)="sortingSelectOpened()"></div>
+			<div class="everythingt__filter_text">{{currentSortBy | titlecase}}</div>
+			<img alt="" src="../../../assets/img/arrow_for_select.png" class="everythingt__filter_arrow sort-arrow">
+			<div class="everythingt__filter_row" *ngIf="isSortingOpened">
+				<div class="everythingt__filter_row-item" *ngFor="let sortItem of sortingList"
+					(click)="sortingSelect($event)">{{sortItem | titlecase}}</div>
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="everythingt__news">
+		<app-news *ngFor="let article of news" [article]="article"></app-news>
+	</div>
+
+
+
+
+	<div class="pagination">
+		<button type="button" class="pagination__arrow-button" (click)="currentPageFromPrevArrow()">
+			<img src="../../../assets/img/double-arrows.png" alt="" class="pagination__arrow-button_img">
+		</button>
+
+		<div class="pagination__button_cntr">
+			<button class="pagination__button" *ngFor="let pagin of numberOfPagesForPagination; let i = index"
+				[ngClass]="i === 0 ? 'pagination__active' : ''" [value]="pagin"
+				(click)="currentPage($event)">{{pagin}}</button>
+		</div>
+
+		<button type="button" class="pagination__arrow-button" (click)="currentPageFromNextArrow()">
+			<img src="../../../assets/img/double-arrows.png" alt="" class="pagination__arrow-button_img">
+		</button>
+	</div>
+
+
+
+
+</div>

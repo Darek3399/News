@@ -1,0 +1,33 @@
+.pagination {
+	display: flex;
+	margin: 10px auto 0;
+	width: fit-content;
+	&__item {
+		margin-top: 1px;
+		&_cntr {
+			margin: 0 10px;
+		}
+		&_button {
+			background: linear-gradient(0deg, rgba(26,26,111,0.5426782773656338) 0%, rgba(28,50,130,0.7639667927717962) 16%, rgba(21,69,182,0.49225810929840685) 67%, rgba(45,87,179,0.4138267367493873) 100%);
+			width: 20px;
+			height: 20px;
+			border-radius: 3px;
+			font-weight: 600;
+			color: white;
+		}
+	}
+
+	&__arrow-button {
+		background: transparent;
+		width: 20px;
+		height: 20px;
+		&:first-child {
+			transform: scaleX(-1);
+		}
+		&_img {
+			background: transparent;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}

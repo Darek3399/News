@@ -1,0 +1,48 @@
+<div class="headlines__cntr">
+	<form class="headlines__form">
+		<div class="headlines__selects-cntr">
+			<div class="headlines__select headlines__select-country" (click)="countrySelectOpened()" clickOutsideCountry
+				(clickOutside)="countryClickedOutside()">
+				<div class="headlines__select_text">{{currentCountry}}</div>
+				<img alt="" src="../../../assets/img/arrow_for_select.png" class="headlines__select_arrow">
+				<div class="headlines__select_row" *ngIf="isCountrysOpened">
+					<div class="headlines__select_row-item" (click)="selectCountry($event)" *ngFor="let country of countrys">
+						{{country}}</div>
+				</div>
+			</div>
+			<div class="headlines__select headlines__select-categories" (click)="categoriesSelectOpened()"
+				clickOutsideCategory (clickOutside)="categoryClickedOutside()">
+				<div class="headlines__select_text">{{currentCategory}}</div>
+				<img alt="" src="../../../assets/img/arrow_for_select.png" class="headlines__select_arrow">
+				<div class="headlines__select_row" *ngIf="isCategoriesOpened">
+					<div class="headlines__select_row-item" (click)="selectCategory($event)"
+						*ngFor="let category of categories">{{category | titlecase}}</div>
+				</div>
+			</div>
+		</div>
+		<button type="button" class="headlines__submit-button" (click)="submit()">Search</button>
+	</form>
+	<div class="headlines__news">
+
+		<app-news *ngFor="let article of news" [article]="article"></app-news>
+
+	</div>
+
+
+
+	<div class="pagination">
+		<button type="button" class="pagination__arrow-button" (click)="currentPageFromPrevArrow()">
+			<img src="../../../assets/img/double-arrows.png" alt="" class="pagination__arrow-button_img">
+		</button>
+
+		<div class="pagination__button_cntr">
+			<button class="pagination__button" *ngFor="let pagin of numberOfPagesForPagination; let i = index"
+				[ngClass]="i === 0 ? 'pagination__active' : ''" [value]="pagin"
+				(click)="currentPage($event)">{{pagin}}</button>
+		</div>
+
+		<button type="button" class="pagination__arrow-button" (click)="currentPageFromNextArrow()">
+			<img src="../../../assets/img/double-arrows.png" alt="" class="pagination__arrow-button_img">
+		</button>
+	</div>
+</div>
